@@ -140,6 +140,7 @@ function main() {
 
             function (done) {
               // Get the host IP address from the public interface
+              /* docker method
               var interfaces = os.networkInterfaces()['eth0'];
               if (interfaces) {
                 interfaces.forEach(function (item) {
@@ -148,6 +149,9 @@ function main() {
                   }
                 });
               }
+              */
+              hostIp = process.env.HOST_IP;
+              
               done();
             }
 
@@ -155,7 +159,7 @@ function main() {
             config(null, {
               ip: nconf.get('host:ip') || hostIp,
               realm: nconf.get('host:realm') || 'default',
-              id: nconf.get('host:id') || hostId
+              id: nconf.get('host:id') || os.hostname()
             });
           });
         }
