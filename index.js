@@ -10,7 +10,6 @@
 
 'use strict';
 
-
 var winston = require('winston'),
     os = require('os'),
     path = require('path'),
